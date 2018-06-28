@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JSON Content Editor - Sidharth Menon</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="//use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <script src="./writing-master/Markdown.Converter.js"></script>
+    <script src="./writing-master/Markdown.Sanitizer.js"></script>
+    <script src="./writing-master/Markdown.Editor.js"></script>
+    <script src="./writing-master/Markdown.Extra.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML-full"></script>
+    <script src="./writing-master/mathjax-editing_writing.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="//cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="navbar is-success">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="#">
+            JSON Content Editor
+          </a>
+          <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <div class="file">
+                    <div class="file has-name is-fullwidth">
+                      <label class="file-label">
+                        <input class="file-input" type="file" ref="file" @change="handleFile()">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Choose a file…
+                          </span>
+                        </span>
+                        <span class="file-name">
+                          {{fileName}}
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </p>
+                <p class="control">
+                  <a class="button is-primary" href="#" @click="saveFile()">
+                    <span class="icon">
+                      <i class="fas fa-download"></i>
+                    </span>
+                    <span>Save</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section class="section">
+        <div class="container" >
+          <div class="columns">
+            <div class="column is-two-fifths">
+              <aside class="menu">
+                <p class="menu-label">
+                  {{menuTitle}}
+                </p>
+              
+                <menu-item :parent="0" :contents="contents" ref="menucomp"></menu-item>
+              </aside>  
+            </div>
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Title</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <input class="input" type="text" v-model="content.display">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Parent</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field is-narrow">
+                        <div class="control">
+                          <div class="select is-fullwidth">
+                            <select v-model="content.parent">
+                              <option value="0" >No Parent</option>
+                              <option v-for="item in optionDisplay" :value="item.id">
+                                {{item.option}}
+                              </option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="columns" style="margin-bottom: 0px;">
+                    <div class="column is-half">
+                      <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Order</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <p class="control">
+                              <input class="input" type="text" v-model="content.order">
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column">
+                      <label class="checkbox">
+                        <input type="checkbox" v-model="content.hasChild">
+                        has Child
+                      </label>
+                    </div>
+                    <div class="column">
+                      <label class="checkbox">
+                        <input type="checkbox" v-model="content.hasContent">
+                        has Content
+                      </label>
+                    </div>
+                  </div>
+                      
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Icon</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <input class="input" type="text" v-model="content.icon">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-content" style="padding: 0px;">
+                  <div id="wmd-button-bar" class="wmd-button-bar"></div>
+                  <textarea id="wmd-input" class="column wmd-input" spellcheck="false"
+                   v-model="content.content"></textarea>
+                  <div id="wmd-preview" class="column wmd-preview">
+                    <noscript>This text editor requires JavaScript.</noscript>
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <span class="card-footer-item"></span>
+                  <a href="#" class="card-footer-item" @click="newPage">New</a>
+                  <a href="#" class="card-footer-item" @click="deletePage">Delete</a>
+                </footer> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="./vuescript.js"></script>
+    <script src="./script.js"></script>
+    
+  </body>
+</html>
