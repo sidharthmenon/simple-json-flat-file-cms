@@ -63,6 +63,14 @@
                     <span>Save</span>
                   </a>
                 </p>
+                <p class="control">
+                  <a class="button is-warning" href="#" @click="launchModal=true">
+                    <span class="icon">
+                      <i class="fas fa-wrench"></i>
+                    </span>
+                    <span>Config</span>
+                  </a>
+                </p>
               </div>
             </div>
           </div>
@@ -181,6 +189,46 @@
           </div>
         </div>
       </section>
+      <div class="modal is-active" v-if="launchModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close" @click="launchModal=false"></button>
+          </header>
+          <section class="modal-card-body">
+            <div class="field is-horizontal" v-for="(item,key) in config">
+              <div class="field-label is-normal">
+                <label class="label">{{key}}</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control has-icons-right">
+                    <input class="input" type="text" v-model="config[key]">
+                  </div>
+                </div>
+                <span class="icon is-small is-right" style="margin-top: 10px;" 
+                  @click="deleteConfig(key)">
+                  <button class="delete is-danger"></button>
+                </span>
+              </div>
+            </div>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button" @click="launchModal=false">Close</button>
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input" type="text" v-model="newkey" placeholder="Add a config key">
+              </div>
+              <div class="control">
+                <a class="button is-info" @click="addKey()">
+                  Add
+                </a>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
     </div>
     <script src="./vuescript.js"></script>
     <script src="./script.js"></script>

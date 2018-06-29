@@ -1,3 +1,7 @@
+/*
+Author: Sidharth Menon
+Website: http://sidharthmenon.com
+ */
 const EventBus = new Vue()
 
 Object.defineProperties(Vue.prototype, {
@@ -71,6 +75,12 @@ var app = new Vue({
       }
     ],
     fileName: '',
+    launchModal: false,
+    config: {
+      title: "Sample JSON Flat File CMS",
+      home: "0"
+    },
+    newkey: '',
   },
   methods:{
     getIndex: function(id){
@@ -136,7 +146,10 @@ var app = new Vue({
       var tmppath = URL.createObjectURL(this.$refs.file.files[0]);
       this.fileName = this.$refs.file.files[0].name;
       this.readTextFile(tmppath, function(data){
-        this.contents=JSON.parse(data).content;
+        var json = JSON.parse(data);
+        this.contents= json.content;
+        this.config= json.config;
+        this.refreshMenu();
       }.bind(this))
     },
     download: function(content, fileName, contentType){
@@ -147,8 +160,17 @@ var app = new Vue({
       a.click();
     },
     saveFile: function(){
-      var jsonData = JSON.stringify({"content" : this.contents}, null, 2);
+      var jsonData = JSON.stringify({"content" : this.contents, "config": this.config}, null, 2);
       this.download(jsonData, this.fileName, 'application/json');
+    },
+    deleteConfig: function (key) {
+      this.config[key] = undefined;
+      delete this.config[key];
+      console.log(key);
+    },
+    addKey: function () {
+      this.$set(this.config, this.newkey, "Enter Value");
+      this.newkey = '';
     },
   },
   computed:{

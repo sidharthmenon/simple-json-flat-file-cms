@@ -1,0 +1,107 @@
+{
+  "content": [
+    {
+      "id": "1",
+      "display": "About",
+      "parent": "0",
+      "hasChild": false,
+      "hasContent": true,
+      "content": "# About\nThis is a sample of the website created using JSON file as data source. Vuejs is used to process the data and **[vue-markdown](https://github.com/miaolz123/vue-markdown)** by miaolz123 is used to render the markdown content provided from the JSON file.\n\nThe [JSON Content Editor](#) can be used to edit the contents. The editor is also made using VueJs and utilised **[Writing](https://github.com/josephernest/writing/)** a lightweight distraction-free markdown editor by josephernest",
+      "order": "1",
+      "icon": "1",
+      "option": "About"
+    },
+    {
+      "id": "2",
+      "display": "Services",
+      "parent": "0",
+      "hasChild": true,
+      "hasContent": false,
+      "content": "0",
+      "order": "2",
+      "icon": "2",
+      "option": "Services"
+    },
+    {
+      "id": "3",
+      "display": "Product",
+      "parent": "0",
+      "hasChild": true,
+      "hasContent": false,
+      "content": "0",
+      "order": "3",
+      "icon": "3",
+      "option": "Product"
+    },
+    {
+      "id": "4",
+      "display": "Contact",
+      "parent": "0",
+      "hasChild": false,
+      "hasContent": true,
+      "content": "This is a test page\n\n- [x] Write the press release\n- [ ] Update the website\n- [ ] Contact the media",
+      "order": "4",
+      "icon": "4",
+      "option": "Contact"
+    },
+    {
+      "id": "5",
+      "display": "Service 1",
+      "parent": "2",
+      "hasChild": false,
+      "hasContent": true,
+      "content": "## Service 1\n\nThis is a test page.\n\n- First item\n- Second item\n- Third item",
+      "order": "1",
+      "icon": "5",
+      "option": "-Service 1"
+    },
+    {
+      "id": "6",
+      "display": "Service 2",
+      "parent": "2",
+      "hasChild": true,
+      "hasContent": true,
+      "content": "##Service 2",
+      "order": "2",
+      "icon": "6",
+      "option": "-Service 2"
+    },
+    {
+      "id": "7",
+      "display": "Product 1",
+      "parent": "3",
+      "hasChild": false,
+      "hasContent": true,
+      "content": "## Product 1\n\nThis is a test page\n\n``` json\n{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"age\": 25\n}\n```",
+      "order": "1",
+      "icon": "7",
+      "option": "-Product 1"
+    },
+    {
+      "id": "8",
+      "display": "Product 2",
+      "parent": "3",
+      "hasChild": false,
+      "hasContent": true,
+      "content": "## Product 2\n\nThis is a test page\n\nHere's a sentence with a footnote. [^1]\n\n[^1]: This is the footnote.",
+      "order": "2",
+      "icon": "7",
+      "option": "-Product 2"
+    },
+    {
+      "id": "9",
+      "display": "Service 3",
+      "parent": "6",
+      "hasChild": false,
+      "hasContent": true,
+      "content": "## Service 3\n\nThis is a test page\n\n| Syntax | Description |\n| ----------- | ----------- |\n| Header | Title |\n| Paragraph | Text |",
+      "order": "1",
+      "icon": "6",
+      "option": "--Service 3"
+    }
+  ],
+  "config": {
+    "title": "Sample JSON Flat File CMS",
+    "home": "0"
+  }
+}

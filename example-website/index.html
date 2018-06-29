@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="./style.css">
+
+	<script src="//unpkg.com/vue@2.1.8/dist/vue.min.js"></script>
+  <script src="./vue-markdown.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
+  <link rel="stylesheet" href="//unpkg.com/katex@0.6.0/dist/katex.min.css">
+</head>
+<body>
+  <div id="app">
+  	<!-- Navigation -->
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+	    <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" href="#">{{config.title}}</a>
+	    </div>
+	    <div class="collapse navbar-collapse">
+	    		<menu-item :parent="0" menuclass="nav navbar-nav" :contents="contents" ref="menucomp">
+      	</menu-item>
+	    </div>
+	    <!--/.nav-collapse -->
+		</div>
+	</div>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 mt-5">
+          <vue-markdown :source="source"></vue-markdown>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<script src="./script.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

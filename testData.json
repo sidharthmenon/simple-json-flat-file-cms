@@ -90,5 +90,9 @@
       "order": "1",
       "icon": "6"
     }
-  ]
+  ],
+  "config": {
+    "title": "Sample JSON Flat File CMS",
+    "home": "1"
+  }
 }
