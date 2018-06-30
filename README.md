@@ -35,6 +35,6 @@ An example of usage of the JSON file using VueJS is shown in the example-website
 In the example Vuejs is used to process the data and utilises **[vue-markdown](https://github.com/miaolz123/vue-markdown)** by miaolz123 is used to render the markdown content provided from the JSON file.
 
 # Usage
-You dont necessary have to host your own editor. You can Uitilise the editor that is hosted here: **[Editor](#)** to edit your json file.
+You dont necessary have to host your own editor. You can Uitilise the editor that is hosted here: **[Editor](https://sidharthmenon.github.io/simple-json-flat-file-cms/)** to edit your json file.
 
 Once you have the json file made you can either build your on code or use the one provided in example-website to iterate over the pages.
