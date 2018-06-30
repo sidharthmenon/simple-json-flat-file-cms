@@ -6,7 +6,7 @@ The editor gives a gui to edit the json format.
 
 ```json
 {
-  contents:[
+  "contents":[
     {
       "id": "1",
       "display": "Page Name",
@@ -18,7 +18,7 @@ The editor gives a gui to edit the json format.
       "icon": "1"
     },
   ],
-  config: {
+  "config": {
     "title": "Website Title",
     "home": "1"
   }
